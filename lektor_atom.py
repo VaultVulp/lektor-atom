@@ -184,20 +184,20 @@ class AtomPlugin(Plugin):
         self.env.add_build_program(AtomFeedSource, AtomFeedBuilderProgram)
 
         @self.env.virtualpathresolver('atom')
-        def feed_path_resolver(node, pieces):
-            if len(pieces) != 1:
-                return
-
-            _id = pieces[0]
-
+        def feed_path_resolver(node, path_segments):
+            assert len(path_segments) == 1, 'Need to tell lektor_atom which feed you mean. ' \
+                + 'Use @atom/$FEED_ID where $FEED_ID is a section name from configs/atom.ini'
+            
+            _id = path_segments[0]
             config = self.get_config()
-            if _id not in config.sections():
-                return
-
+            assert _id in config.sections(), '%r is not a valid feed id from configs/atom.ini. Valid ids are: %r' \
+                 % (_id, config.sections())
+            
             source_path = self.get_atom_config(_id, 'source_path')
-            if node.path == source_path:
-                return AtomFeedSource(node, _id, plugin=self)
-
+            assert node.path == source_path, 'You tried to locate the atom feed at a different place %r than what was configured %r' \
+                % (node.path, source_path)
+            return AtomFeedSource(node, _id, plugin=self)
+        
         @self.env.generator
         def generate_feeds(source):
             for _id in self.get_config().sections():
