@@ -123,9 +123,9 @@ class AtomFeedBuilderProgram(BuildProgram):
         else:
             subtitle_type = 'text'
         blog_author = text_type(get(blog, feed_source.blog_author_field) or '')
-        generator = ('Lektor Atom Plugin',
-                     'https://github.com/ajdavis/lektor-atom',
-                     pkg_resources.get_distribution('lektor-atom').version)
+        generator = ('Lektor Atom Feed Plugin',
+                     'https://github.com/VaultVulp/lektor-atom',
+                     pkg_resources.get_distribution('lektor-atom-feed').version)
 
         feed = AtomFeed(
             title=feed_source.feed_name,

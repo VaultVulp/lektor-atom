@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='lektor-atom-feed',
-    version='0.3',
+    version='0.5',
     author=u'A. Jesse Jiryu Davis',
     author_email='jesse@emptysquare.net',
     license='MIT',
@@ -12,7 +12,7 @@ setup(
     url='https://github.com/VaultVulp/lektor-atom',
     entry_points={
         'lektor.plugins': [
-            'atom = lektor_atom:AtomPlugin',
+            'atom-feed = lektor_atom:AtomPlugin',
         ]
     }
 )
