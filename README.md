@@ -6,10 +6,10 @@ Inspired by the [atom-feed-support](https://github.com/lektor/lektor-website/tre
 
 ## Installation
 
-Add lektor-atom to your project from command line:
+Add lektor-atom-feed to your project from command line:
 
 ```
-lektor plugins add lektor-atom
+lektor plugins add lektor-atom-feed
 ```
 
 See [the Lektor documentation for more instructions on installing plugins](https://www.getlektor.com/docs/plugins/).
